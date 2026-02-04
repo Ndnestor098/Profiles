@@ -34,7 +34,7 @@ return new class extends Migration
             $table->date('fecha_modificacion')->nullable();
             $table->date('fecha_adquisicion')->nullable();
 
-            $table->string('estado')->default('Inactivo');
+            $table->string('estado')->default('Activo');
             $table->string('proveedor')->nullable();
             $table->string('lugar_imagen')->nullable();
             $table->timestamp('primer_inicio_sesion')->nullable();

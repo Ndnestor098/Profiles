@@ -162,33 +162,8 @@
             </div>
 
             {{-- footer pagination --}}
-            <div class="flex items-center justify-between text-xs text-slate-500 pt-4">
-                <div>Mostrando 1 a 6 de 6 registros</div>
+            <x-pagination :profiles="$profiles"/>
 
-                <div class="flex items-center gap-2">
-                    <button class="px-3 py-2 rounded-lg hover:bg-slate-100 transition flex items-center gap-2">
-                        {{-- left icon --}}
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                        Anterior
-                    </button>
-
-                    <div class="flex items-center gap-2">
-                        <button class="w-9 h-9 rounded-xl bg-blue-600 text-white font-semibold shadow-sm">1</button>
-                        <button class="w-9 h-9 rounded-xl hover:bg-slate-100 transition">2</button>
-                        <button class="w-9 h-9 rounded-xl hover:bg-slate-100 transition">3</button>
-                    </div>
-
-                    <button class="px-3 py-2 rounded-lg hover:bg-slate-100 transition flex items-center gap-2">
-                        Siguientes
-                        {{-- right icon --}}
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
 
