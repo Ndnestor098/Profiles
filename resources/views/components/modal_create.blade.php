@@ -13,7 +13,7 @@
             </button>
 
             {{-- IMPORTANTE: action al route store --}}
-            <form action="" method="POST" class="flex flex-col gap-6">
+            <form action="{{ route('profiles.store') }}" method="POST" class="flex flex-col gap-6">
                 @csrf
 
                 {{-- nombre, ciudad, ubicacion de imagenes y proveedor --}}

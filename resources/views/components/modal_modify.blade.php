@@ -9,10 +9,12 @@
                 </svg>
             </button>
 
-            <form action="" method="post" class="flex flex-col gap-6">
+            <form action="{{ route('profiles.update') }}" method="post" class="flex flex-col gap-6">
                 @csrf
-                @method('PUT')
+                <input type="hidden" id="user_id" name="user_id" value="1" >
+                <input type="hidden" name="level" id="modify-level-input" value="1">
 
+                
                 {{-- nombre, ciudad, ubicacion de imagenes y proveedor --}}
                 <div class="flex gap-5">
                     {{-- nivel --}}

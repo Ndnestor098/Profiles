@@ -42,7 +42,6 @@
       </div>
 
       {{-- input hidden para enviar en el form --}}
-      <input type="hidden" name="level" id="{{ $inputId }}" value="1">
     </div>
 
     {{-- botón subir --}}

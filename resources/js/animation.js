@@ -19,6 +19,7 @@ window.openModalModify = function (open = true, profile = null) {
     document.getElementById('estado').value = profile.estado
     document.getElementById('proveedor').value = profile.proveedor
     document.getElementById('ciudad_imagenes').value = profile.ciudad_imagenes
+    document.getElementById('user_id').value = profile.id
 
     // ✅ ahora sí correcto
     addingLevel('modify', profile.level)
