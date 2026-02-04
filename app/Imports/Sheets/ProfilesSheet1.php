@@ -36,21 +36,4 @@ class ProfilesSheet1 implements ToCollection, WithHeadingRow
             );
         }
     }
-
-    private function parseExcelDate($value)
-    {
-        if (!$value) return null;
-
-        // Excel a veces entrega DateTime directo
-        if ($value instanceof \DateTimeInterface) {
-            return Carbon::instance($value)->format('Y-m-d');
-        }
-
-        // si llega string tipo 24/04/2024
-        if (is_string($value) && str_contains($value, '/')) {
-            return Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
-        }
-
-        return null;
-    }
 }

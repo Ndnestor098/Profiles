@@ -3,46 +3,24 @@
 namespace App\Imports\Sheets;
 
 use App\Models\Profile;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
-class ProfilesSheet4 implements ToCollection
+class ProfilesSheet4 implements ToCollection, WithHeadingRow
 {
     public function collection(Collection $rows)
     {
-        // 1) obtener profile_codes ordenados por "profile_code" (p1..pN)
-        $codes = Profile::query()
-            ->orderByRaw("CAST(SUBSTRING(profile_code, 2) AS UNSIGNED)") // p1,p2...
-            ->pluck('profile_code')
-            ->values();
+        foreach ($rows as $row) {
+            $code = trim((string)($row[1] ?? ''));
+            if (!$code) continue;
 
-        // 2) la primera fila del sheet4 son headers -> saltar
-        $rows = $rows->slice(1)->values();
-
-        foreach ($rows as $i => $row) {
-
-            $profileCode = $codes[$i] ?? null;
-            if (!$profileCode) continue;
-
-            // columnas por índice (según la hoja)
-            $password = trim((string)($row[0] ?? ''));
-            $emailRec      = trim((string)($row[1] ?? ''));
-            $passRec       = trim((string)($row[2] ?? ''));
-            $nuevoNombre   = trim((string)($row[3] ?? ''));
-
-
-
-            Profile::where('profile_code', $profileCode)->update([
-                'nombre' => $nuevoNombre ?: null,
-
-                // actualiza email recuperación / pass recuperación
-                'email_recuperacion' => $emailRec ?: null,
-                'password_recuperacion' => $passRec ?: null,
-
-                // si hay nueva contraseña => actualiza hash
-                'password' => $password,
-            ]);
+            Profile::updateOrCreate(
+                ['profile_code' => $code],
+                [
+                    'software' => $row[5],
+                ]
+            );
         }
     }
 }

@@ -26,25 +26,4 @@ class ProfilesSheet3 implements ToCollection, WithHeadingRow
             );
         }
     }
-
-    private function parseExcelDateTime($value)
-    {
-        if (!$value) return null;
-
-        if ($value instanceof \DateTimeInterface) {
-            return Carbon::instance($value)->toDateTimeString();
-        }
-
-        // si fuese string dd/mm/yyyy hh:mm
-        if (is_string($value)) {
-            $value = trim($value);
-            try {
-                return Carbon::parse($value)->toDateTimeString();
-            } catch (\Throwable $e) {
-                return null;
-            }
-        }
-
-        return null;
-    }
 }

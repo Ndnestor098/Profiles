@@ -26,14 +26,6 @@ class ProfilesSheet2 implements ToCollection, WithHeadingRow
             $emailRec = $row['email_de_recuperacion'] ?? '';
             $passRec = $row['contrasena_mail_de_recuperacion'] ?? '';
 
-            Log::info([
-                'profileCode' => $code,
-                'nombre' => $nombre,
-                'password' => $password,
-                'emailRec' => $emailRec,
-                'passRec' => $passRec,
-            ]);
-
             Profile::updateOrCreate(
                 ['profile_code' => $code],
                 [

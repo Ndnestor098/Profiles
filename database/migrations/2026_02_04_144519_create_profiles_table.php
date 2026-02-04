@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('email_recuperacion')->nullable();
             $table->boolean('bind_email')->default(false);
+            $table->string('software')->nullable();
 
             $table->string('password')->nullable();
             $table->string('password_recuperacion')->nullable();

@@ -16,6 +16,7 @@ class Profile extends Model
         'email',
         'email_recuperacion',
         'password',
+        'software',
         'password_recuperacion',
         'clave_2fa',
         'fecha_creacion',

@@ -67,7 +67,7 @@
                 <table class="w-full text-sm">
                     <thead class="bg-slate-50 text-slate-600">
                         <tr class="text-left">
-                            <th class="text-center w-[50px] px-4 py-3 font-semibold">ID</th>
+                            <th class="text-center w-[72px] px-4 py-3 font-semibold">ID</th>
                             <th class="text-center w-[72px] px-4 py-3 font-semibold">Nivel</th>
                             <th class="px-4 py-3 font-semibold">Nombre</th>
                             <th class="px-4 py-3 font-semibold">Email</th>

@@ -12,7 +12,7 @@ class ProfilesImport implements WithMultipleSheets
             0 => new Sheets\ProfilesSheet1(),
             1 => new Sheets\ProfilesSheet2(),
             2 => new Sheets\ProfilesSheet3(),
-            // 2 => new Sheets\ProfilesSheet4(),
+            3 => new Sheets\ProfilesSheet4(),
         ];
     }
 }
