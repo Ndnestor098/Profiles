@@ -1,0 +1,11 @@
+services:
+  profiles:
+    container_name: profiles
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    volumes:
+      - ./:/var/www
+    ports:
+      - "8900:8900"
+    restart : always
