@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ds;
+use App\Models\Profile;
 use Illuminate\Http\Request;
 
 class ProfilesController extends Controller
@@ -12,7 +13,8 @@ class ProfilesController extends Controller
      */
     public function index()
     {
-        //
+        $profiles = Profile::paginate(20);
+        return view('profiles.index', compact('profiles'));
     }
 
     /**

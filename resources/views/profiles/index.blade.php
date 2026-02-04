@@ -27,7 +27,7 @@
             <x-topbar title="Perfiles Local Guide"/>
 
             <main class="flex-1">
-                <x-table_orders/>
+                <x-table_orders :profiles="$profiles"/>
             </main>
         </div>
     </div>

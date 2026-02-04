@@ -7,6 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-    /** @use HasFactory<\Database\Factories\ProfileFactory> */
     use HasFactory;
+    protected $fillable = [
+        'profile_code',
+        'level',
+        'nombre',
+        'ciudad',
+        'email',
+        'email_recuperacion',
+        'password_hash',
+        'password_recuperacion',
+        'clave_2fa',
+        'fecha_creacion',
+        'fecha_modificacion',
+        'fecha_adquisicion',
+        'estado',
+        'proveedor',
+        'lugar_imagen',
+        'primer_inicio_sesion',
+        'bind_email',
+    ];
 }

@@ -1,115 +1,4 @@
 @php
-    $profiles = [
-        [
-            'id' => 'p1',
-            'level' => 1,
-            'nombre' => 'Pablo García',
-            'ciudad' => 'Milano',
-            'email' => 'pablo@gmail.com',
-            'email_recuperacion' => 'pablo.rec@gmail.com',
-            'password_recuperacion' => 'rec_pablo_2024',
-            'password' => 'clave_test',
-            'clave_2fa' => '123456',
-            'fecha_creacion' => '24/04/2024',
-            'fecha_modificacion' => '24/04/2024',
-            'fecha_adquisicion' => '10/03/2024',
-            'estado' => 'Activo',
-            'proveedor' => 'Google',
-            'ciudad_imagenes' => 'Madrid',
-            'badge' => 'green',
-        ],
-        [
-            'id' => 'p2',
-            'level' => 2,
-            'nombre' => 'Tarjeas Alfonso',
-            'ciudad' => 'Roma',
-            'email' => 'tarjeas@gmail.com',
-            'email_recuperacion' => 'tarjeas.rec@gmail.com',
-            'password_recuperacion' => 'rec_tarjeas_2024',
-            'password' => 'clave_test',
-            'clave_2fa' => '123456',
-            'fecha_creacion' => '24/04/2024',
-            'fecha_modificacion' => '24/04/2024',
-            'fecha_adquisicion' => '15/03/2024',
-            'estado' => 'Activo',
-            'proveedor' => 'Microsoft',
-            'ciudad_imagenes' => 'Madrid',
-            'badge' => 'blue',
-        ],
-        [
-            'id' => 'p3',
-            'level' => 3,
-            'nombre' => 'Lotlia Quenes',
-            'ciudad' => 'Torino',
-            'email' => 'lotlia@gmail.com',
-            'email_recuperacion' => 'lotlia.rec@gmail.com',
-            'password_recuperacion' => 'rec_lotlia_2024',
-            'password' => 'clave_test',
-            'clave_2fa' => '123456',
-            'fecha_creacion' => '24/04/2024',
-            'fecha_modificacion' => '24/04/2024',
-            'fecha_adquisicion' => '01/03/2024',
-            'estado' => 'Activo',
-            'proveedor' => 'Amazon',
-            'ciudad_imagenes' => 'Barcelona',
-            'badge' => 'orange',
-        ],
-        [
-            'id' => 'p4',
-            'level' => 4,
-            'nombre' => 'Pecio Garbaas',
-            'ciudad' => 'Napoli',
-            'email' => 'pecio@gmail.com',
-            'email_recuperacion' => 'pecio.rec@gmail.com',
-            'password_recuperacion' => 'rec_pecio_2024',
-            'password' => 'clave_test',
-            'clave_2fa' => '123456',
-            'fecha_creacion' => '24/04/2024',
-            'fecha_modificacion' => '24/04/2024',
-            'fecha_adquisicion' => '20/03/2024',
-            'estado' => 'Activo',
-            'proveedor' => 'Apple',
-            'ciudad_imagenes' => 'Valencia',
-            'badge' => 'blue',
-        ],
-        [
-            'id' => 'p5',
-            'level' => 2,
-            'nombre' => '2hendion Ruiz',
-            'ciudad' => 'Firenze',
-            'email' => 'hendion@gmail.com',
-            'email_recuperacion' => 'hendion.rec@gmail.com',
-            'password_recuperacion' => 'rec_hendion_2024',
-            'password' => 'clave_test',
-            'clave_2fa' => '123456',
-            'fecha_creacion' => '24/04/2024',
-            'fecha_modificacion' => '24/04/2024',
-            'fecha_adquisicion' => '05/04/2024',
-            'estado' => 'Activo',
-            'proveedor' => 'Meta',
-            'ciudad_imagenes' => 'Andalucia',
-            'badge' => 'green',
-        ],
-        [
-            'id' => 'p6',
-            'level' => 3,
-            'nombre' => 'Sergio Rios',
-            'ciudad' => 'Bologna',
-            'email' => 'sergio@gmail.com',
-            'email_recuperacion' => 'sergio.rec@gmail.com',
-            'password_recuperacion' => 'rec_sergio_2024',
-            'password' => 'clave_test',
-            'clave_2fa' => '123456',
-            'fecha_creacion' => '24/04/2024',
-            'fecha_modificacion' => '24/04/2024',
-            'fecha_adquisicion' => '18/03/2024',
-            'estado' => 'Activo',
-            'proveedor' => 'GitHub',
-            'ciudad_imagenes' => 'Andalucia',
-            'badge' => 'red',
-        ],
-    ];
-
     $status_color = [
         'Activo' => 'bg-blue-100 text-blue-700',
         'Inactivo' => 'bg-orange-100 text-orange-700',
@@ -211,57 +100,63 @@
                     </thead>
 
                     <tbody class="divide-y divide-slate-100">
-                        @foreach($profiles as $r)
-                            <tr class="hover:bg-slate-50/60">
-                                <td class="cursor-pointer px-4 py-3 text-slate-700 font-bold" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['id'] }}</td>
-                                <td class="cursor-pointer px-4 py-3 text-slate-700 h-10 w-10" onclick="openModalView(true, {{ json_encode($r) }})">
-                                    <x-level_table :level="$r['level']" />
-                                </td>
-                                <td class="cursor-pointer px-4 py-3 text-slate-700" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['nombre'] }}</td>
-                                <td class="cursor-pointer px-4 py-3 text-slate-700" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['email'] }}</td>
-                                <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['password'] }}</td>
-                                <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['clave_2fa'] }}</td>
-                                <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['fecha_creacion'] }}</td>
-                                <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['fecha_modificacion'] }}</td>
-                                <td class="cursor-pointer px-4 py-3" onclick="openModalView(true, {{ json_encode($r) }})">
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold {{ $status_color[$r['estado']] ?? 'bg-slate-100 text-slate-700' }}">
-                                        {{ $r['estado'] }}
-                                    </span>
-                                </td>
-
-                                {{-- modificar --}}
-                                <td class="text-center py-3" onclick="openModalModify(true, {{ json_encode($r) }})">
-                                    <button type="button"
-                                            class="cursor-pointer p-2 rounded-xl text-slate-600 hover:text-yellow-700
-                                                hover:bg-yellow-100 transition"
-                                            aria-label="Editar">
-                                        {{-- pencil icon --}}
-                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                                            <path d="M12 20h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </button>
-                                </td>
-
-                                {{-- eliminar --}}
-                                <td class="text-center py-3">
-                                    <button type="button"
-                                            class="cursor-pointer p-2 rounded-xl text-slate-600 hover:text-red-700
-                                                hover:bg-red-50 transition"
-                                            aria-label="Eliminar">
-                                        {{-- trash icon --}}
-                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                                            <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                            <path d="M8 6V4h8v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M6 6l1 14h10l1-14" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-                                            <path d="M10 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                            <path d="M14 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                        </svg>
-                                    </button>
-                                </td>
+                        @if($profiles->count() == 0)
+                            <tr>
+                                <td colspan="11" class="text-center py-4 text-slate-500">No hay perfiles</td>
                             </tr>
-                        @endforeach
+                        @else
+                            @foreach($profiles as $r)
+                                <tr class="hover:bg-slate-50/60">
+                                    <td class="cursor-pointer px-4 py-3 text-slate-700 font-bold" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['id'] }}</td>
+                                    <td class="cursor-pointer px-4 py-3 text-slate-700 h-10 w-10" onclick="openModalView(true, {{ json_encode($r) }})">
+                                        <x-level_table :level="$r['level']" />
+                                    </td>
+                                    <td class="cursor-pointer px-4 py-3 text-slate-700" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['nombre'] }}</td>
+                                    <td class="cursor-pointer px-4 py-3 text-slate-700" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['email'] }}</td>
+                                    <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['password'] }}</td>
+                                    <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['clave_2fa'] }}</td>
+                                    <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['fecha_creacion'] }}</td>
+                                    <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['fecha_modificacion'] }}</td>
+                                    <td class="cursor-pointer px-4 py-3" onclick="openModalView(true, {{ json_encode($r) }})">
+                                        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold {{ $status_color[$r['estado']] ?? 'bg-slate-100 text-slate-700' }}">
+                                            {{ $r['estado'] }}
+                                        </span>
+                                    </td>
+
+                                    {{-- modificar --}}
+                                    <td class="text-center py-3" onclick="openModalModify(true, {{ json_encode($r) }})">
+                                        <button type="button"
+                                                class="cursor-pointer p-2 rounded-xl text-slate-600 hover:text-yellow-700
+                                                    hover:bg-yellow-100 transition"
+                                                aria-label="Editar">
+                                            {{-- pencil icon --}}
+                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                                                <path d="M12 20h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                                <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"
+                                                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </button>
+                                    </td>
+
+                                    {{-- eliminar --}}
+                                    <td class="text-center py-3">
+                                        <button type="button"
+                                                class="cursor-pointer p-2 rounded-xl text-slate-600 hover:text-red-700
+                                                    hover:bg-red-50 transition"
+                                                aria-label="Eliminar">
+                                            {{-- trash icon --}}
+                                            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                                                <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                                <path d="M8 6V4h8v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                                <path d="M6 6l1 14h10l1-14" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                                <path d="M10 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                                <path d="M14 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        @endif
                     </tbody>
                 </table>
             </div>

@@ -1,7 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfilesController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('profiles.index');
-});
+Route::get('/', [ProfilesController::class, 'index'])->name('profiles.index');
