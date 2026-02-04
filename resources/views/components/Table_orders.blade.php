@@ -107,7 +107,7 @@
                         @else
                             @foreach($profiles as $r)
                                 <tr class="hover:bg-slate-50/60">
-                                    <td class="cursor-pointer px-4 py-3 text-slate-700 font-bold" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['id'] }}</td>
+                                    <td class="cursor-pointer px-4 py-3 text-slate-700 font-bold" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['profile_code'] }}</td>
                                     <td class="cursor-pointer px-4 py-3 text-slate-700 h-10 w-10" onclick="openModalView(true, {{ json_encode($r) }})">
                                         <x-level_table :level="$r['level']" />
                                     </td>

@@ -72,7 +72,7 @@ window.openModalView = function (open = true, profile = null) {
     setText('view_fecha_adquisicion', profile.fecha_adquisicion)
     setText('view_estado', profile.estado)
 
-    setText('view_ciudad_imagenes', profile.ciudad_imagenes)
+    setText('view_ciudad_imagenes', profile.lugar_imagen)
 
     // level color
     addingLevel('view', profile.level)

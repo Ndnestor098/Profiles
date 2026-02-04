@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\ProfilesImport;
 use App\Models\ds;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class ProfilesController extends Controller
 {
@@ -13,8 +16,13 @@ class ProfilesController extends Controller
      */
     public function index()
     {
-        $profiles = Profile::paginate(20);
+        $profiles = Profile::paginate(50);
         return view('profiles.index', compact('profiles'));
+    }
+
+    public function upload()
+    {
+        return view('profiles.upload');
     }
 
     /**
@@ -30,7 +38,13 @@ class ProfilesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'file' => ['required', 'file', 'mimes:xlsx,xls'],
+        ]);
+
+        Excel::import(new ProfilesImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Excel importado correctamente ✅');
     }
 
     /**

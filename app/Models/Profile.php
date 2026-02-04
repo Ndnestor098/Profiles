@@ -15,7 +15,7 @@ class Profile extends Model
         'ciudad',
         'email',
         'email_recuperacion',
-        'password_hash',
+        'password',
         'password_recuperacion',
         'clave_2fa',
         'fecha_creacion',
