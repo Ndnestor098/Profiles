@@ -6,18 +6,17 @@
   {{-- Círculo --}}
   <div class="relative">
 
-    {{-- si es para modificar --}}
-    @if ($modify)
     {{-- botón bajar --}}
-    <button type="button"
-            id="btn-level-down"
-            class="absolute -left-4 top-1/2 -translate-y-1/2
-                   w-10 h-10 rounded-full bg-white shadow-md ring-1 ring-slate-200
-                   flex items-center justify-center text-slate-700
-                   hover:bg-slate-50 active:scale-95 transition"
-            aria-label="Bajar nivel">
-      <span class="text-2xl font-bold leading-none">−</span>
-    </button>
+    @if ($modify)
+      <button type="button"
+              id="btn-level-down"
+              class="absolute -left-4 top-1/2 -translate-y-1/2
+                    w-10 h-10 rounded-full bg-white shadow-md ring-1 ring-slate-200
+                    flex items-center justify-center text-slate-700
+                    hover:bg-slate-50 active:scale-95 transition"
+              aria-label="Bajar nivel">
+        <span class="text-2xl font-bold leading-none">−</span>
+      </button>
     @endif
 
     {{-- círculo --}}
@@ -37,9 +36,8 @@
       <input type="hidden" name="level" id="level-input" value="1">
     </div>
 
-    {{-- si es para modificar --}}
+    {{-- botón subir --}}
     @if ($modify)
-      {{-- botón subir --}}
       <button type="button"
               id="btn-level-up"
               class="absolute -right-4 top-1/2 -translate-y-1/2

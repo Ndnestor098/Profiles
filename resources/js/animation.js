@@ -1,5 +1,4 @@
 window.openModalModify = function (open = true, profile = null) {
-    console.log(profile)
     const modal = document.getElementById('modal-modify')
     if (!modal) return
 

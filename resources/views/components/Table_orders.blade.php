@@ -162,6 +162,7 @@
                     <thead class="bg-slate-50 text-slate-600">
                         <tr class="text-left">
                             <th class="px-4 py-3 font-semibold">ID</th>
+                            <th class="px-4 py-3 font-semibold">Nivel</th>
                             <th class="px-4 py-3 font-semibold">Nombre</th>
                             <th class="px-4 py-3 font-semibold">Email</th>
                             <th class="px-4 py-3 font-semibold">Password</th>
@@ -187,6 +188,8 @@
                                 </button>
                             </th>
                             <th class="px-4 py-3 font-semibold">Estado</th>
+                            <th class="px-4 py-3 font-semibold">Modificar</th>
+                            <th class="px-4 py-3 font-semibold">Eliminar</th>
                         </tr>
                     </thead>
 
@@ -194,6 +197,9 @@
                         @foreach($profiles as $r)
                             <tr class="hover:bg-slate-50/60" onclick="openModalModify(true, {{ json_encode($r) }})">
                                 <td class="px-4 py-3 text-slate-700">{{ $r['id'] }}</td>
+                                <td class="px-4 py-3 text-slate-700 h-10 w-10">
+                                    <x-level_table :level="$r['level']" />
+                                </td>
                                 <td class="px-4 py-3 text-slate-700">{{ $r['nombre'] }}</td>
                                 <td class="px-4 py-3 text-slate-700">{{ $r['email'] }}</td>
                                 <td class="px-4 py-3 text-slate-800 font-medium">{{ $r['password'] }}</td>
@@ -204,6 +210,28 @@
                                     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold {{ $badge[$r['badge']] ?? 'bg-slate-100 text-slate-700' }}">
                                         {{ $r['estado'] }}
                                     </span>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <button class="px-3 py-2 rounded-lg hover:bg-slate-100 transition flex items-center gap-2">
+                                        {{-- edit icon --}}
+                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="m16.75 6.75-2.43 2.43M17.71 5.71L5.65 17.76"
+                                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </td>
+                                <td class="px-4 py-3">
+                                    <button class="px-3 py-2 rounded-lg hover:bg-slate-100 transition flex items-center gap-2">
+                                        {{-- delete icon --}}
+                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
+                                            <path d="M6 19C6 20.1046 6.89543 21 8 21H16C17.1046 21 18 20.1046 18 19V7H6V19Z"
+                                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M12 5V19"
+                                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
                                 </td>
                             </tr>
                         @endforeach
