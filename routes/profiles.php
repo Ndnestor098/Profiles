@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProfilesController::class, 'index'])->name('index');
 
-Route::post('/create', [ProfilesController::class, 'store'])->name('store');
+Route::post('/create', [ProfilesController::class, 'create'])->name('create');
 
 Route::post('/update', [ProfilesController::class, 'update'])->name('update');
 

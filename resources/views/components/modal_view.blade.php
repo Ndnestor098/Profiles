@@ -22,23 +22,25 @@
 
                     <div class="grid grid-cols-2 gap-4 w-full">
                         <x-info_copy label="Nombre" id="view_nombre"/>
+                        <x-info_copy label="Ciudad imágenes" id="view_ciudad_imagenes"/>
                         <x-info_copy label="Ciudad" id="view_ciudad"/>
-                        <x-info_copy label="Email" id="view_email"/>
                         <x-info_copy label="Proveedor" id="view_proveedor"/>
                     </div>
                 </div>
 
                 {{-- grid de datos --}}
                 <div class="grid grid-cols-2 gap-4">
+                    <x-info_copy label="Email" id="view_email"/>
+                    <x-info_copy label="Password" id="view_password"/>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
                     <x-info_copy label="Email recuperación" id="view_email_recuperacion"/>
                     <x-info_copy label="Password recuperación" id="view_password_recuperacion"/>
                 </div>
 
-                <div class="grid grid-cols-2 gap-4">
-                    <x-info_copy label="Password" id="view_password"/>
-                    <x-info_copy label="Clave 2FA" id="view_clave_2fa"/>
-                </div>
-
+                <x-info_copy label="Clave 2FA" id="view_clave_2fa"/>
+                
                 <div class="grid grid-cols-2 gap-4">
                     <x-info_copy label="Fecha creación" id="view_fecha_creacion"/>
                     <x-info_copy label="Fecha modificación" id="view_fecha_modificacion"/>
@@ -46,7 +48,6 @@
                     <x-info_copy label="Estado" id="view_estado"/>
                 </div>
 
-                <x-info_copy label="Ciudad imágenes" id="view_ciudad_imagenes"/>
 
             </div>
         </div>

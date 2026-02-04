@@ -19,6 +19,7 @@
                 <div class="flex gap-5">
                     {{-- nivel --}}
                     <x-level :modify="true" prefix="modify"/>
+                    
                     {{-- nombre y ciudad --}}
                     <div class="flex flex-col gap-4">
                         {{-- nombre --}}

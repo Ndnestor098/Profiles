@@ -144,15 +144,17 @@ function addingLevel(prefix, level) {
 
   const el = document.getElementById(`${prefix}-class-level`)
   const number = document.getElementById(`${prefix}-level`)
-  const input = document.getElementById(`${prefix}-level-input`)
+  const input = document.getElementById(`${prefix}-level-input`) // puede NO existir
 
-  if (!el || !number || !input) return
+  if (!el || !number) return   // ✅ input no es obligatorio
 
   Object.values(levelStyles).forEach(cls => el.classList.remove(...cls.split(' ')))
   el.classList.add(...style.split(' '))
 
   number.textContent = level
-  input.value = level
+
+  // ✅ solo si existe (modify/create)
+  if (input) input.value = level
 }
 
 
@@ -161,7 +163,7 @@ function initLevel(prefix, startLevel = 1) {
   const btnDown = document.getElementById(`${prefix}-btn-level-down`)
   const btnUp   = document.getElementById(`${prefix}-btn-level-up`)
   const input   = document.getElementById(`${prefix}-level-input`)
-
+  
   // si el widget no existe, salir
   if (!input) return
 
@@ -182,6 +184,7 @@ function initLevel(prefix, startLevel = 1) {
 document.addEventListener('DOMContentLoaded', () => {
   initLevel('modify', 1)
   initLevel('create', 1)
+  initLevel('view', 1)
 })
 
 

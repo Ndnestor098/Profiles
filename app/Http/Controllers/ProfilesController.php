@@ -29,23 +29,68 @@ class ProfilesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
-    }
+        // ✅ validación baja para crear (pero con lo importante)
+        $data = $request->validate([
+            'level' => 'nullable|integer|min:1|max:10',
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $request->validate([
-            'file' => ['required', 'file', 'mimes:xlsx,xls'],
+            'create_name' => 'nullable|string|max:120',
+            'create_ciudad' => 'nullable|string|max:120',
+            'create_ciudad_imagenes' => 'nullable|string|max:120',
+            'create_proveedor' => 'nullable|string|max:120',
+
+            'create_email' => ['nullable', 'email', 'max:190', Rule::unique('profiles', 'email')],
+            'create_password' => 'nullable|string|max:255',
+
+            'create_email_recuperacion' => 'nullable|email|max:190',
+            'create_password_recuperacion' => 'nullable|string|max:255',
+
+            'create_clave_2fa' => 'nullable|string|max:255',
+
+            // opcionales por si tu modal las tiene
+            'create_estado' => 'nullable|string|max:50',
+            'create_fecha_creacion' => 'nullable|date',
+            'create_fecha_modificacion' => 'nullable|date',
+            'create_fecha_adquisicion' => 'nullable|date',
         ]);
 
-        Excel::import(new ProfilesImport, $request->file('file'));
+        $profile = new Profile();
 
-        return redirect()->back()->with('success', 'Excel importado correctamente ✅');
+
+        $last = Profile::latest('id')->value('profile_code'); // ej: "P-43"
+
+        $lastNumber = (int) str_replace(['P-', 'p-'], '', $last); // 43
+        $newCode = 'P-' . ($lastNumber + 1); // "P-44"
+
+        $profile->profile_code = $newCode;
+
+        // defaults
+        $profile->level = $data['level'] ?? 1;
+        $profile->estado = $data['create_estado'] ?? 'Activo';
+
+        // mapeo form -> DB
+        $profile->nombre = $data['create_name'];
+        $profile->ciudad = $data['create_ciudad'] ?? null;
+        $profile->lugar_imagen = $data['create_ciudad_imagenes'] ?? null;
+        $profile->proveedor = $data['create_proveedor'] ?? null;
+
+        $profile->email = $data['create_email'];
+        $profile->password = $data['create_password'] ?? null;
+
+        $profile->email_recuperacion = $data['create_email_recuperacion'] ?? null;
+        $profile->password_recuperacion = $data['create_password_recuperacion'] ?? null;
+
+        $profile->clave_2fa = $data['create_clave_2fa'] ?? null;
+
+        // fechas si existen
+        if (!empty($data['create_fecha_creacion'])) $profile->fecha_creacion = $data['create_fecha_creacion'];
+        if (!empty($data['create_fecha_modificacion'])) $profile->fecha_modificacion = $data['create_fecha_modificacion'];
+        if (!empty($data['create_fecha_adquisicion'])) $profile->fecha_adquisicion = $data['create_fecha_adquisicion'];
+
+        $profile->save();
+
+        return back()->with('success', 'Perfil creado correctamente ✅');
     }
 
     /**
@@ -119,6 +164,22 @@ class ProfilesController extends Controller
 
         return back()->with('success', 'Perfil actualizado ✅');
     }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        $request->validate([
+            'file' => ['required', 'file', 'mimes:xlsx,xls'],
+        ]);
+
+        Excel::import(new ProfilesImport, $request->file('file'));
+
+        return redirect()->back()->with('success', 'Excel importado correctamente ✅');
+    }
+
+
     /**
      * Remove the specified resource from storage.
      */

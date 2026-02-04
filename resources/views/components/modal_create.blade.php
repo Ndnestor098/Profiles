@@ -13,8 +13,9 @@
             </button>
 
             {{-- IMPORTANTE: action al route store --}}
-            <form action="{{ route('profiles.store') }}" method="POST" class="flex flex-col gap-6">
+            <form action="{{ route('profiles.create') }}" method="POST" class="flex flex-col gap-6">
                 @csrf
+                <input type="hidden" name="level" id="create-level-input" value="1">
 
                 {{-- nombre, ciudad, ubicacion de imagenes y proveedor --}}
                 <div class="flex gap-5">
