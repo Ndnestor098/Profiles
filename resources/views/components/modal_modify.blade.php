@@ -4,7 +4,7 @@
         <div class="relative rounded-lg bg-white p-6">
             <h2 class="text-center text-lg font-semibold mb-4">Actualizar perfil</h2>
             <button class="cursor-pointer absolute top-2 right-2 text-gray-400 hover:text-gray-600" onclick="openModalModify(false)">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>

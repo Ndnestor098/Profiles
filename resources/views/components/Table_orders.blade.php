@@ -110,10 +110,8 @@
         ],
     ];
 
-
-    $badge = [
+    $status_color = [
         'green' => 'bg-green-100 text-green-700',
-        'blue' => 'bg-blue-100 text-blue-700',
         'orange' => 'bg-orange-100 text-orange-700',
         'red' => 'bg-red-100 text-red-700',
     ];
@@ -188,14 +186,14 @@
                                 </button>
                             </th>
                             <th class="px-4 py-3 font-semibold">Estado</th>
-                            <th class="px-4 py-3 font-semibold">Modificar</th>
-                            <th class="px-4 py-3 font-semibold">Eliminar</th>
+                            <th class="text-center w-[63px] px-1 py-3 font-semibold">Modificar</th>
+                            <th class="text-center w-[63px] px-1 py-3 font-semibold">Eliminar</th>
                         </tr>
                     </thead>
 
                     <tbody class="divide-y divide-slate-100">
                         @foreach($profiles as $r)
-                            <tr class="hover:bg-slate-50/60" onclick="openModalModify(true, {{ json_encode($r) }})">
+                            <tr class="hover:bg-slate-50/60">
                                 <td class="px-4 py-3 text-slate-700">{{ $r['id'] }}</td>
                                 <td class="px-4 py-3 text-slate-700 h-10 w-10">
                                     <x-level_table :level="$r['level']" />
@@ -211,25 +209,35 @@
                                         {{ $r['estado'] }}
                                     </span>
                                 </td>
-                                <td class="px-4 py-3">
-                                    <button class="px-3 py-2 rounded-lg hover:bg-slate-100 transition flex items-center gap-2">
-                                        {{-- edit icon --}}
-                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                                            <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="m16.75 6.75-2.43 2.43M17.71 5.71L5.65 17.76"
-                                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+                                {{-- modificar --}}
+                                <td class="text-center py-3" onclick="openModalModify(true, {{ json_encode($r) }})">
+                                    <button type="button"
+                                            class="cursor-pointer p-2 rounded-xl text-slate-600 hover:text-yellow-700
+                                                hover:bg-yellow-100 transition"
+                                            aria-label="Editar">
+                                        {{-- pencil icon --}}
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                                            <path d="M12 20h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                            <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </button>
                                 </td>
-                                <td class="px-4 py-3">
-                                    <button class="px-3 py-2 rounded-lg hover:bg-slate-100 transition flex items-center gap-2">
-                                        {{-- delete icon --}}
-                                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none">
-                                            <path d="M6 19C6 20.1046 6.89543 21 8 21H16C17.1046 21 18 20.1046 18 19V7H6V19Z"
-                                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M12 5V19"
-                                                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+                                {{-- eliminar --}}
+                                <td class="text-center py-3">
+                                    <button type="button"
+                                            class="cursor-pointer p-2 rounded-xl text-slate-600 hover:text-red-700
+                                                hover:bg-red-50 transition"
+                                            aria-label="Eliminar">
+                                        {{-- trash icon --}}
+                                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
+                                            <path d="M3 6h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                            <path d="M8 6V4h8v2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M6 6l1 14h10l1-14" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                                            <path d="M10 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                            <path d="M14 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                                         </svg>
                                     </button>
                                 </td>
