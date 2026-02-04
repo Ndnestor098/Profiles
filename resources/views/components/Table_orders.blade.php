@@ -111,9 +111,9 @@
     ];
 
     $status_color = [
-        'green' => 'bg-green-100 text-green-700',
-        'orange' => 'bg-orange-100 text-orange-700',
-        'red' => 'bg-red-100 text-red-700',
+        'Activo' => 'bg-blue-100 text-blue-700',
+        'Inactivo' => 'bg-orange-100 text-orange-700',
+        'Eliminado' => 'bg-red-100 text-red-700',
     ];
 @endphp
 
@@ -159,8 +159,8 @@
                 <table class="w-full text-sm">
                     <thead class="bg-slate-50 text-slate-600">
                         <tr class="text-left">
-                            <th class="px-4 py-3 font-semibold">ID</th>
-                            <th class="px-4 py-3 font-semibold">Nivel</th>
+                            <th class="text-center w-[50px] px-4 py-3 font-semibold">ID</th>
+                            <th class="text-center w-[72px] px-4 py-3 font-semibold">Nivel</th>
                             <th class="px-4 py-3 font-semibold">Nombre</th>
                             <th class="px-4 py-3 font-semibold">Email</th>
                             <th class="px-4 py-3 font-semibold">Password</th>
@@ -194,7 +194,7 @@
                     <tbody class="divide-y divide-slate-100">
                         @foreach($profiles as $r)
                             <tr class="hover:bg-slate-50/60">
-                                <td class="px-4 py-3 text-slate-700">{{ $r['id'] }}</td>
+                                <td class="px-4 py-3 text-slate-700 font-bold">{{ $r['id'] }}</td>
                                 <td class="px-4 py-3 text-slate-700 h-10 w-10">
                                     <x-level_table :level="$r['level']" />
                                 </td>
@@ -205,7 +205,7 @@
                                 <td class="px-4 py-3 text-slate-800 font-medium">{{ $r['fecha_creacion'] }}</td>
                                 <td class="px-4 py-3 text-slate-800 font-medium">{{ $r['fecha_modificacion'] }}</td>
                                 <td class="px-4 py-3">
-                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold {{ $badge[$r['badge']] ?? 'bg-slate-100 text-slate-700' }}">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold {{ $status_color[$r['estado']] ?? 'bg-slate-100 text-slate-700' }}">
                                         {{ $r['estado'] }}
                                     </span>
                                 </td>

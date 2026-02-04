@@ -27,6 +27,19 @@ window.openModalModify = function (open = true, profile = null) {
     }
 }
 
+window.openModalCreate = function (open = true) {
+  const modal = document.getElementById('modal-create')
+  if (!modal) return
+
+  if (open) {
+    modal.classList.remove('hidden')
+    modal.classList.add('flex')
+  } else {
+    modal.classList.add('hidden')
+    modal.classList.remove('flex')
+  }
+}
+
 function dmyToYmd(dmy) {
   // "24/04/2024" -> "2024-04-24"
   if (!dmy || typeof dmy !== 'string') return ''

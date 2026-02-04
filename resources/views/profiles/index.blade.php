@@ -24,7 +24,7 @@
         <x-menu/>
 
         <div class="flex-1 flex flex-col">
-            <x-topbar/>
+            <x-topbar title="Perfiles Local Guide"/>
 
             <main class="flex-1">
                 <x-table_orders/>

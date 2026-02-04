@@ -1,4 +1,7 @@
-{{-- resources/views/components/topbar.blade.php --}}
+@props([
+    'title' => 'Perfiles Local Guide',
+])
+
 <header class="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-white">
     <div class="flex items-center gap-3">
         <div class="w-10 h-10 rounded-2xl bg-blue-600 flex items-center justify-center text-white shadow-sm">
@@ -6,7 +9,7 @@
                 <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
         </div>
-        <h1 class="text-lg font-semibold text-slate-800">Panel de Control</h1>
+        <h1 class="text-lg font-semibold text-slate-800">{{ $title }}</h1>
     </div>
 
     <div class="flex items-center gap-4">
