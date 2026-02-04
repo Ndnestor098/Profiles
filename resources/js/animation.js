@@ -5,6 +5,7 @@ window.openModalModify = function (open = true, profile = null) {
   if (open) {
     modal.classList.remove('hidden')
     modal.classList.add('flex')
+    console.log(profile.fecha_adquisicion)
 
     document.getElementById('name').value = profile.nombre
     document.getElementById('ciudad').value = profile.ciudad
@@ -110,15 +111,25 @@ window.copyField = async function (id) {
   }
 }
 
-
 function dmyToYmd(dmy) {
-  // "24/04/2024" -> "2024-04-24"
-  if (!dmy || typeof dmy !== 'string') return ''
+  if (!dmy) return ''
 
-  const [d, m, y] = dmy.split('/')
-  if (!d || !m || !y) return ''
+  // si viene undefined o null o algo que no es string
+  if (typeof dmy !== 'string') return ''
 
-  return `${y}-${m}-${d}`
+  const s = dmy.trim()
+  if (!s) return ''
+
+  // si ya viene en formato date input: YYYY-MM-DD
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s
+
+  // si viene dd/mm/yyyy o d/m/yyyy
+  if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(s)) {
+    let [d, m, y] = s.split('/').map(n => n.padStart(2, '0'))
+    return `${y}-${m}-${d}`
+  }
+
+  return ''
 }
 
 function clamp(n, min, max) {
