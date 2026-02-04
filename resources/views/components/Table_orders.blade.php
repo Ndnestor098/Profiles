@@ -121,16 +121,35 @@
     <div class="bg-white rounded-2xl shadow-sm border border-slate-100">
         {{-- header card --}}
         <div class="px-6 pt-5 pb-4 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-9 h-9 rounded-xl bg-blue-600/10 text-blue-600 flex items-center justify-center">
-                    {{-- Table icon --}}
+            <div class="flex items-center gap-3 rounded-2xl px-3 py-2
+                        bg-blue-50 border border-blue-100
+                        cursor-pointer select-none
+                        hover:bg-blue-100 hover:border-blue-200
+                        transition-all duration-200"
+                onclick="openModalCreate(true)"           
+            >
+
+                <div class="w-9 h-9 rounded-xl bg-blue-600/10 text-blue-600
+                            flex items-center justify-center">
+                    {{-- Add user icon --}}
                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
-                        <path d="M4 6h16M4 10h16M4 14h16M4 18h16"
-                              stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M20 8v6"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M17 11h6"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                     </svg>
                 </div>
-                <h2 class="text-base font-semibold text-slate-800">Perfiles</h2>
+
+                <h2 class="text-sm font-semibold text-blue-900">
+                    Agregar perfil
+                </h2>
             </div>
+
+
 
             {{-- search --}}
             <div class="relative w-64">
@@ -280,6 +299,9 @@
 
     <x-modal_modify>
     </x-modal_modify>
+
+    <x-modal_create>
+    </x-modal_create>
 
 </section>
 
