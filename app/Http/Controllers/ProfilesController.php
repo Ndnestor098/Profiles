@@ -53,6 +53,7 @@ class ProfilesController extends Controller
             'create_fecha_creacion' => 'nullable|date',
             'create_fecha_modificacion' => 'nullable|date',
             'create_fecha_adquisicion' => 'nullable|date',
+            'create_software' => 'nullable|string|max:255',
         ]);
 
         $profile = new Profile();
@@ -82,6 +83,7 @@ class ProfilesController extends Controller
         $profile->password_recuperacion = $data['create_password_recuperacion'] ?? null;
 
         $profile->clave_2fa = $data['create_clave_2fa'] ?? null;
+        $profile->software = $data['create_software'] ?? null;
 
         // fechas si existen
         if (!empty($data['create_fecha_creacion'])) $profile->fecha_creacion = $data['create_fecha_creacion'];
@@ -99,24 +101,7 @@ class ProfilesController extends Controller
     public function update(Request $request)
     {
         // ✅ validación baja (sin exigir todos los campos)
-        $data = $request->validate([
-            'user_id' => 'required|integer|exists:profiles,id',
-
-            'level' => 'nullable|integer|min:1|max:10',
-
-            'name' => 'nullable|string|max:120',
-            'ciudad' => 'nullable|string|max:120',
-            'ciudad_imagenes' => 'nullable|string|max:120',
-            'proveedor' => 'nullable|string|max:120',
-
-            'email' => 'nullable|email|max:190',
-            'password' => 'nullable|string|max:255',
-
-            'email_recuperacion' => 'nullable|email|max:190',
-            'password_recuperacion' => 'nullable|string|max:255',
-
-            'clave_2fa' => 'nullable|string|max:255',
-        ]);
+        $data = $request->all();
 
         $profile = Profile::findOrFail($data['user_id']);
 
@@ -158,6 +143,18 @@ class ProfilesController extends Controller
 
         if (!empty($data['clave_2fa'])) {
             $profile->clave_2fa = $data['clave_2fa'];
+        }
+
+        if (!empty($data['fecha_adquisicion'])) {
+            $profile->fecha_adquisicion = $data['fecha_adquisicion'];
+        }
+
+        if (!empty($data['software'])) {
+            $profile->software = $data['software'];
+        }
+
+        if (!empty($data['estado'])) {
+            $profile->estado = $data['estado'];
         }
 
         $profile->save();

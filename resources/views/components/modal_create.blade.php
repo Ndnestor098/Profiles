@@ -119,19 +119,19 @@
                     />
 
                     <x-label_input
-                        label="Fecha modificación"
-                        placeholder="fecha_modificacion"
-                        type="date"
-                        id="create_fecha_modificacion"
-                        name="fecha_modificacion"
-                    />
-
-                    <x-label_input
                         label="Fecha de adquisición"
                         placeholder="fecha_adquisicion"
                         type="date"
                         id="create_fecha_adquisicion"
                         name="fecha_adquisicion"
+                    />
+
+                    <x-label_input
+                        label="Software"
+                        placeholder="software"
+                        type="text"
+                        id="create_software"
+                        name="software"
                     />
 
                     <x-label_input

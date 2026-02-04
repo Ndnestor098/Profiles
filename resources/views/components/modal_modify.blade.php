@@ -122,14 +122,6 @@
                         id="fecha_creacion"
                         name="fecha_creacion"
                     />
-                    {{-- fecha modificacion --}}
-                    <x-label_input
-                        label="Fecha modificación"
-                        placeholder="fecha_modificacion"
-                        type="date"
-                        id="fecha_modificacion"
-                        name="fecha_modificacion"
-                    />
                     
                     {{-- fecha adquisicion --}}
                     <x-label_input
@@ -138,6 +130,15 @@
                         type="date"
                         id="fecha_adquisicion"
                         name="fecha_adquisicion"
+                    />
+
+                    {{-- software --}}
+                    <x-label_input
+                        label="Software"
+                        placeholder="software"
+                        type="text"
+                        id="software"
+                        name="software"
                     />
 
                     {{-- estado --}}

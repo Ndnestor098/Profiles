@@ -22,7 +22,7 @@
 
                     <div class="grid grid-cols-2 gap-4 w-full">
                         <x-info_copy label="Nombre" id="view_nombre"/>
-                        <x-info_copy label="Ciudad imágenes" id="view_ciudad_imagenes"/>
+                        <x-info_copy label="Lugar imágenes" id="view_ciudad_imagenes"/>
                         <x-info_copy label="Ciudad" id="view_ciudad"/>
                         <x-info_copy label="Proveedor" id="view_proveedor"/>
                     </div>
@@ -43,8 +43,8 @@
                 
                 <div class="grid grid-cols-2 gap-4">
                     <x-info_copy label="Fecha creación" id="view_fecha_creacion"/>
-                    <x-info_copy label="Fecha modificación" id="view_fecha_modificacion"/>
                     <x-info_copy label="Fecha adquisición" id="view_fecha_adquisicion"/>
+                    <x-info_copy label="Software" id="view_software"/>
                     <x-info_copy label="Estado" id="view_estado"/>
                 </div>
 

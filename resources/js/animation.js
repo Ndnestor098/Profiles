@@ -14,8 +14,8 @@ window.openModalModify = function (open = true, profile = null) {
     document.getElementById('password').value = profile.password
     document.getElementById('clave_2fa').value = profile.clave_2fa
     document.getElementById('fecha_creacion').value = dmyToYmd(profile.fecha_creacion)
-    document.getElementById('fecha_modificacion').value = dmyToYmd(profile.fecha_modificacion)
     document.getElementById('fecha_adquisicion').value = dmyToYmd(profile.fecha_adquisicion)
+    document.getElementById('software').value = profile.software
     document.getElementById('estado').value = profile.estado
     document.getElementById('proveedor').value = profile.proveedor
     document.getElementById('ciudad_imagenes').value = profile.ciudad_imagenes
@@ -69,8 +69,8 @@ window.openModalView = function (open = true, profile = null) {
     setText('view_clave_2fa', profile.clave_2fa)
 
     setText('view_fecha_creacion', profile.fecha_creacion)
-    setText('view_fecha_modificacion', profile.fecha_modificacion)
     setText('view_fecha_adquisicion', profile.fecha_adquisicion)
+    setText('view_software', profile.software)
     setText('view_estado', profile.estado)
 
     setText('view_ciudad_imagenes', profile.lugar_imagen)
