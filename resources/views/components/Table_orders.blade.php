@@ -213,17 +213,17 @@
                     <tbody class="divide-y divide-slate-100">
                         @foreach($profiles as $r)
                             <tr class="hover:bg-slate-50/60">
-                                <td class="px-4 py-3 text-slate-700 font-bold">{{ $r['id'] }}</td>
-                                <td class="px-4 py-3 text-slate-700 h-10 w-10">
+                                <td class="cursor-pointer px-4 py-3 text-slate-700 font-bold" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['id'] }}</td>
+                                <td class="cursor-pointer px-4 py-3 text-slate-700 h-10 w-10" onclick="openModalView(true, {{ json_encode($r) }})">
                                     <x-level_table :level="$r['level']" />
                                 </td>
-                                <td class="px-4 py-3 text-slate-700">{{ $r['nombre'] }}</td>
-                                <td class="px-4 py-3 text-slate-700">{{ $r['email'] }}</td>
-                                <td class="px-4 py-3 text-slate-800 font-medium">{{ $r['password'] }}</td>
-                                <td class="px-4 py-3 text-slate-800 font-medium">{{ $r['clave_2fa'] }}</td>
-                                <td class="px-4 py-3 text-slate-800 font-medium">{{ $r['fecha_creacion'] }}</td>
-                                <td class="px-4 py-3 text-slate-800 font-medium">{{ $r['fecha_modificacion'] }}</td>
-                                <td class="px-4 py-3">
+                                <td class="cursor-pointer px-4 py-3 text-slate-700" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['nombre'] }}</td>
+                                <td class="cursor-pointer px-4 py-3 text-slate-700" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['email'] }}</td>
+                                <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['password'] }}</td>
+                                <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['clave_2fa'] }}</td>
+                                <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['fecha_creacion'] }}</td>
+                                <td class="cursor-pointer px-4 py-3 text-slate-800 font-medium" onclick="openModalView(true, {{ json_encode($r) }})">{{ $r['fecha_modificacion'] }}</td>
+                                <td class="cursor-pointer px-4 py-3" onclick="openModalView(true, {{ json_encode($r) }})">
                                     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold {{ $status_color[$r['estado']] ?? 'bg-slate-100 text-slate-700' }}">
                                         {{ $r['estado'] }}
                                     </span>
@@ -302,6 +302,9 @@
 
     <x-modal_create>
     </x-modal_create>
+
+    <x-modal_view>
+    </x-modal_view>
 
 </section>
 

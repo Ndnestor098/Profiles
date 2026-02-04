@@ -45,6 +45,70 @@ window.openModalCreate = function (open = true) {
   }
 }
 
+window.openModalView = function (open = true, profile = null) {
+  const modal = document.getElementById('modal-view')
+  if (!modal) return
+
+  if (open) {
+    modal.classList.remove('hidden')
+    modal.classList.add('flex')
+
+    if (!profile) return
+
+    // set text
+    setText('view_nombre', profile.nombre)
+    setText('view_ciudad', profile.ciudad)
+    setText('view_email', profile.email)
+    setText('view_proveedor', profile.proveedor)
+
+    setText('view_email_recuperacion', profile.email_recuperacion)
+    setText('view_password_recuperacion', profile.password_recuperacion)
+
+    setText('view_password', profile.password)
+    setText('view_clave_2fa', profile.clave_2fa)
+
+    setText('view_fecha_creacion', profile.fecha_creacion)
+    setText('view_fecha_modificacion', profile.fecha_modificacion)
+    setText('view_fecha_adquisicion', profile.fecha_adquisicion)
+    setText('view_estado', profile.estado)
+
+    setText('view_ciudad_imagenes', profile.ciudad_imagenes)
+
+    // level color
+    addingLevel('view', profile.level)
+
+  } else {
+    modal.classList.add('hidden')
+    modal.classList.remove('flex')
+  }
+}
+
+function setText(id, value) {
+  const el = document.getElementById(id)
+  if (!el) return
+  el.textContent = value ?? '—'
+}
+
+window.copyField = async function (id) {
+  const el = document.getElementById(id)
+  if (!el) return
+
+  const text = (el.textContent || '').trim()
+  if (!text || text === '—') return
+
+  try {
+    await navigator.clipboard.writeText(text)
+
+    const msg = document.getElementById(id + '_copied')
+    if (msg) {
+      msg.classList.remove('hidden')
+      setTimeout(() => msg.classList.add('hidden'), 900)
+    }
+  } catch (e) {
+    console.error('Clipboard error:', e)
+  }
+}
+
 
 function dmyToYmd(dmy) {
   // "24/04/2024" -> "2024-04-24"
