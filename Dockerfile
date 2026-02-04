@@ -1,4 +1,4 @@
-FROM php:8.3-fpm-alpine
+FROM php:8.4-fpm-alpine
 
 # Actualiza y se agrega dependencias del sistema
 RUN apk --no-cache upgrade && \
